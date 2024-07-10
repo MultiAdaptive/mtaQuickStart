@@ -341,10 +341,8 @@ main() {
         init_datapath
         ##创建账户
         new_account
-      
         ##选择了链的类型
         chose_chain_type
-    
         ##填写l1 url
         config_url
         ##将配置记录下来

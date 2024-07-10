@@ -28,9 +28,9 @@ ChainID=11155111
 # join or create chain
 TYPE=""
 
-p2p_port=
+P2P_PORT=
 
-bootnode=
+BOOTNODEINFO=
 
 L1Url=
 
@@ -59,8 +59,6 @@ read_chain_conf() {
         do
             key=$(echo $key | tr '.' '_')
             eval ${key}=\${value}
-            echo ${key}
-            echo ${value}
         done < "$CHAIN_INFO_FILE"
     else
         echo "$CHAIN_INFO_FILE not found, existing."
@@ -75,10 +73,7 @@ start_geth() {
 
     cd $MULTIADAPTIVE_BIN
     
-    nohup ./geth --datadir $CHAIN_DATA_DIR --http --http.corsdomain=* --http.vhosts=* --http.addr=0.0.0.0 --http.api=eth,net --ws --ws.addr=0.0.0.0 --ws.origins=* --ws.api=eth,net--syncmode=full --gcmode=archive --maxpeers=10 --networkid=$ChainID --authrpc.vhosts=*  --l1Url $L1Url --bootnodes $bootnode >> $CHAIN_DATA_DIR/geth.log 2>&1 &
-    
-    
-    echo "./geth --datadir $CHAIN_DATA_DIR --http --http.corsdomain=* --http.vhosts=* --http.addr=0.0.0.0 --http.api=eth,net --ws --ws.addr=0.0.0.0 --ws.origins=* --ws.api=eth,net--syncmode=full --gcmode=archive --maxpeers=10 --networkid=$ChainID --authrpc.vhosts=*  --l1Url $L1Url --bootnodes $bootnode >> $CHAIN_DATA_DIR/geth.log 2>&1 &"
+    nohup ./geth --datadir $CHAIN_DATA_DIR --http --http.corsdomain=* --http.vhosts=* --http.addr=0.0.0.0 --http.api=eth,net --ws --ws.addr=0.0.0.0 --ws.origins=* --ws.api=eth,net--syncmode=full --gcmode=archive --maxpeers=10 --networkid=$ChainID --authrpc.vhosts=*  --l1Url $L1Url --bootnodes $BOOTNODEINFO >> $CHAIN_DATA_DIR/geth.log 2>&1 &
     
     pidFile="$CHAIN_CONF_DIR/geth.pid"
     if [ ! -f $pidFile ];then
@@ -95,7 +90,7 @@ start_btc() {
 
     cd $MULTIADAPTIVE_BIN
     
-    nohup ./geth --datadir $CHAIN_DATA_DIR --http --http.corsdomain=* --http.vhosts=* --http.addr=0.0.0.0 --http.api=eth,net --ws --ws.addr=0.0.0.0 --ws.origins=* --ws.api=eth,net--syncmode=full --gcmode=archive --maxpeers=10 --l1Host $BTCHost --l1User $BTCUser --l1Password $BTCPWD --nodeType $NODETYPE --btcPrivate $BTCPriv --chainName bitcoin  --networkid=$ChainID --bootnodes $bootnode >> $CHAIN_DATA_DIR/geth.log 2>&1 &
+    nohup ./geth --datadir $CHAIN_DATA_DIR --http --http.corsdomain=* --http.vhosts=* --http.addr=0.0.0.0 --http.api=eth,net --ws --ws.addr=0.0.0.0 --ws.origins=* --ws.api=eth,net--syncmode=full --gcmode=archive --maxpeers=10 --l1Host $BTCHost --l1User $BTCUser --l1Password $BTCPWD --nodeType $NODETYPE --btcPrivate $BTCPriv --chainName bitcoin  --networkid=$ChainID --bootnodes $BOOTNODEINFO >> $CHAIN_DATA_DIR/geth.log 2>&1 &
     
     pidFile="$CHAIN_CONF_DIR/geth.pid"
     if [ ! -f $pidFile ];then
@@ -153,9 +148,6 @@ write_bootnodes_file() {
 
 main() {
     read_chain_conf
-    
-    
-    echo "$CHAINTYPE"
     if [ "$CHAINTYPE" == "eth" ];then
         start_geth
     else
