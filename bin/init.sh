@@ -191,7 +191,7 @@ new_account() {
 
 # get account address
 get_account_address() {
-    ADDRESS_LIST=`$MULTIADAPTIVE_BIN/geth  account list --datadir "$CHAIN_DATA_DIR/data"`
+    ADDRESS_LIST=`$MULTIADAPTIVE_BIN/geth account list --datadir "$CHAIN_DATA_DIR/data"`
     if  [ ! -n "$ADDRESS_LIST" ];then
         new_account
     else
@@ -340,7 +340,7 @@ main() {
         ##创建目录
         init_datapath
         ##创建账户
-        get_account_address
+        new_account
         ##选择了链的类型
         chose_chain_type
         ##填写l1 url
