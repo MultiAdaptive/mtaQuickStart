@@ -179,7 +179,7 @@ new_account() {
    
     touch $CHAIN_DATA_DIR/data/keystore/.password.txt
 
-    echo "$PASSWORD" > $CHAIN_DATA_DIR/data/keystore/.password.txt
+    echo "$PASSWORD" >> $CHAIN_DATA_DIR/data/keystore/.password.txt
 
     get_account_address
 }
@@ -202,7 +202,7 @@ config_url() {
     echo "Please conf the environment variable file...."
     
     if [ "$CHAINTYPE" == "eth" ];then
-        echo PS3="Please pick an option that Kind of L1 RPC you're connecting to, used to inform DA data receipts fetching.: "
+        echo "Please pick an option that Kind of L1 RPC you're connecting to, used to inform DA data receipts fetching.: "
         select opt in "alchemy" "quicknode" "infura" "parity" "nethermind" "debug_geth" "erigon" "basic" "any"; do
         case "$REPLY" in
             1 ) L1_RPC_KIND="alchemy"; break;;
@@ -271,7 +271,7 @@ config_url() {
 chose_chain_type() {
     echo
     echo "Please chose a chain type to run...."
-    echo PS3="Please pick an option that type of multiadaptive suport :"
+    echo "Please pick an option that type of multiadaptive suport :"
     select opt in "eth" "btc"; do
         case "$REPLY" in
             1 ) CHAINTYPE="eth"; break;;
@@ -302,9 +302,9 @@ write_env_conf() {
     if [ "$CHAINTYPE" == "eth" ];then
         echo "L1Url=$L1Url" > $CHAIN_INFO_FILE
     else
-        echo "BTCHost=$BTCHost" > $CHAIN_INFO_FILE
-        echo "BTCUser=$BTCUser" > $CHAIN_INFO_FILE
-        echo "BTCPriv=$BTCPriv" > $CHAIN_INFO_FILE
+        echo "BTCHost=$BTCHost" >> $CHAIN_INFO_FILE
+        echo "BTCUser=$BTCUser" >> $CHAIN_INFO_FILE
+        echo "BTCPriv=$BTCPriv" >> $CHAIN_INFO_FILE
     fi
     echo "chain config info is written into $CHAIN_INFO_FILE,please check that."
     echo
