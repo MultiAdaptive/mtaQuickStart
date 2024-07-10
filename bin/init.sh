@@ -47,6 +47,9 @@ BTCPriv=""
 # chain id
 ChainID=11155111
 
+
+ADDRESS_LIST=""
+
 # boot to p2p connect
 BOOTNODEINFO="enode://dbffc218798fd2febbb1106aa910d336b33bc1b01267a9181b7411af57b37751f9ebcf24e5264dd5fc7fb7572d799d5830882445de76e334590d4662c2a23034@13.212.115.195:30303"
 
@@ -267,6 +270,7 @@ config_url() {
 }
 
 chose_chain_type() {
+    echo
     echo "Please chose a chain type to run...."
     echo
     PS3="Please pick an option that type of multiadaptive suport :"
