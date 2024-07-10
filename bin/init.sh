@@ -330,7 +330,7 @@ main() {
         ##创建目录
         init_datapath
         ##创建账户
-        get_account_address
+        new_account
       
         ##选择了链的类型
         chose_chain_type
