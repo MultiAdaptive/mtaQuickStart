@@ -249,12 +249,14 @@ config_url() {
         
             while true; do
             read -p "Enter the BTC URL User you want config it can be empty: " BTCUser
+            break
             done
             
             echo
             
             while true; do
             read -p "Enter the BTC URL password you want config it can be empty: " BTCPWD
+            break
             done
             
             echo
