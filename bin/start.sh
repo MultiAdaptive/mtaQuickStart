@@ -59,6 +59,8 @@ read_chain_conf() {
         do
             key=$(echo $key | tr '.' '_')
             eval ${key}=\${value}
+            echo ${key}
+            echo ${value}
         done < "$CHAIN_INFO_FILE"
     else
         echo "$CHAIN_INFO_FILE not found, existing."
