@@ -295,9 +295,13 @@ write_env_conf() {
     echo "writting chain config into $CHAIN_INFO_FILE"
     # write net info
     echo "chainID=$ChainID" >> $CHAIN_INFO_FILE
+    echo $ChainID
     echo "host=127.0.0.1" >> $CHAIN_INFO_FILE
+       
     echo "p2p_port=$P2P_PORT" >> $CHAIN_INFO_FILE
+            echo $P2P_PORT
     echo "nodeType=$NODETYPE" >> $CHAIN_INFO_FILE
+                echo $NODETYPE
     echo "chainType=$CHAINTYPE" >> $CHAIN_INFO_FILE
     # write bootnode info
     echo "bootnode=$BOOTNODEINFO" >> $CHAIN_INFO_FILE
