@@ -1,4 +1,4 @@
-#!/bin/bash
+ #!/bin/bash
 
 # init env or getting start
 ACTION="init env"
@@ -340,7 +340,7 @@ main() {
         ##创建目录
         init_datapath
         ##创建账户
-        new_account
+        get_account_address
         ##选择了链的类型
         chose_chain_type
         ##填写l1 url
