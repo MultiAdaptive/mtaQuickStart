@@ -77,6 +77,9 @@ start_geth() {
     
     nohup ./geth --datadir $CHAIN_DATA_DIR --http --http.corsdomain=* --http.vhosts=* --http.addr=0.0.0.0 --http.api=eth,net --ws --ws.addr=0.0.0.0 --ws.origins=* --ws.api=eth,net--syncmode=full --gcmode=archive --maxpeers=10 --networkid=$ChainID --authrpc.vhosts=*  --l1Url $L1Url --bootnodes $bootnode >> $CHAIN_DATA_DIR/geth.log 2>&1 &
     
+    
+    echo "./geth --datadir $CHAIN_DATA_DIR --http --http.corsdomain=* --http.vhosts=* --http.addr=0.0.0.0 --http.api=eth,net --ws --ws.addr=0.0.0.0 --ws.origins=* --ws.api=eth,net--syncmode=full --gcmode=archive --maxpeers=10 --networkid=$ChainID --authrpc.vhosts=*  --l1Url $L1Url --bootnodes $bootnode >> $CHAIN_DATA_DIR/geth.log 2>&1 &"
+    
     pidFile="$CHAIN_CONF_DIR/geth.pid"
     if [ ! -f $pidFile ];then
          touch $pidFile
@@ -151,6 +154,8 @@ write_bootnodes_file() {
 main() {
     read_chain_conf
     
+    
+    echo "$CHAINTYPE"
     if [ "$CHAINTYPE" == "eth" ];then
         start_geth
     else
