@@ -137,7 +137,7 @@ install_gcc() {
     if [ $? -eq 0 ]; then
        echo "Update make success"
        
-       echo 'NOTE!!! You should do !!!:  1.Do source /home/ubuntu/.bashrc； 2. Input "go env -w CGO_ENABLED=1" When initenv.sh is finished.'
+       echo 'NOTE!!! You should do !!!:  1.Do "source /home/ubuntu/.bashrc"； 2. Input "go env -w CGO_ENABLED=1" When initenv.sh is finished.'
        
     else
        echo "Update gcc failed"
@@ -184,8 +184,7 @@ new_account() {
 
 # get account address
 get_account_address() {
-
-    ADDRESS_LIST=`$data/geth  account list --datadir "$CHAIN_HOME_DIR/data"`
+    ADDRESS_LIST=`$MULTIADAPTIVE_BIN/geth  account list --datadir "$CHAIN_HOME_DIR/data"`
     if  [ ! -n "$ADDRESS_LIST" ];then
         new_account
     else
