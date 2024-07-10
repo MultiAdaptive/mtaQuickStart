@@ -176,12 +176,16 @@ new_account() {
     stty $SAVEDSTTY
 
     $MULTIADAPTIVE_BIN/geth account new --datadir "$CHAIN_DATA_DIR/data"
+    
+    if [ $? -eq 0 ]; then
    
-    touch $CHAIN_DATA_DIR/data/keystore/.password.txt
+        touch $CHAIN_DATA_DIR/data/keystore/.password.txt
 
-    echo "$PASSWORD" >> $CHAIN_DATA_DIR/data/keystore/.password.txt
+        echo "$PASSWORD" >> $CHAIN_DATA_DIR/data/keystore/.password.txt
 
-    get_account_address
+        get_account_address
+    fi
+    
 }
 
 
