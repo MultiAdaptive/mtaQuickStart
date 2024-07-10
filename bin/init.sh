@@ -156,7 +156,7 @@ init_datapath() {
         rm -rf $CHAIN_CONF_DIR
     fi
     
-    mkdir -p $CHAIN_DATA_DIR/DataDir
+    mkdir -p $CHAIN_DATA_DIR/data
     mkdir -p $CHAIN_CONF_DIR
     
     touch $CHAIN_INFO_FILE
