@@ -295,26 +295,25 @@ write_env_conf() {
     echo "writting chain config into $CHAIN_INFO_FILE"
     # write net info
     echo "chainID=$ChainID" >> $CHAIN_INFO_FILE
-    echo $ChainID
     echo "host=127.0.0.1" >> $CHAIN_INFO_FILE
-       
     echo "p2p_port=$P2P_PORT" >> $CHAIN_INFO_FILE
-            echo $P2P_PORT
     echo "nodeType=$NODETYPE" >> $CHAIN_INFO_FILE
-                echo $NODETYPE
     echo "chainType=$CHAINTYPE" >> $CHAIN_INFO_FILE
     # write bootnode info
     echo "bootnode=$BOOTNODEINFO" >> $CHAIN_INFO_FILE
     
     if [ "$CHAINTYPE" == "eth" ];then
-        echo "l1Url=$L1Url" > $CHAIN_INFO_FILE
+        echo "l1Url=$L1Url" >> $CHAIN_INFO_FILE
     else
         echo "BTCHost=$BTCHost" >> $CHAIN_INFO_FILE
         echo "BTCUser=$BTCUser" >> $CHAIN_INFO_FILE
         echo "BTCPriv=$BTCPriv" >> $CHAIN_INFO_FILE
     fi
-    echo "chain config info is written into $CHAIN_INFO_FILE,please check that."
-    echo
+    
+    if [ $? -eq 0 ]; then
+        echo "chain config info is written into $CHAIN_INFO_FILE,please check that."
+        echo
+    fi
 }
 
 init_geth() {
