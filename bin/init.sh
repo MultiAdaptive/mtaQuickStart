@@ -296,16 +296,16 @@ P2P_PORT=30303
 write_env_conf() {
     echo "writting chain config into $CHAIN_INFO_FILE"
     # write net info
-    echo "chainID=$ChainID" >> $CHAIN_INFO_FILE
+    echo "ChainID=$ChainID" >> $CHAIN_INFO_FILE
     echo "host=127.0.0.1" >> $CHAIN_INFO_FILE
-    echo "p2p_port=$P2P_PORT" >> $CHAIN_INFO_FILE
-    echo "nodeType=$NODETYPE" >> $CHAIN_INFO_FILE
-    echo "chainType=$CHAINTYPE" >> $CHAIN_INFO_FILE
+    echo "P2P_PORT=$P2P_PORT" >> $CHAIN_INFO_FILE
+    echo "NODETYPE=$NODETYPE" >> $CHAIN_INFO_FILE
+    echo "CHAINTYPE=$CHAINTYPE" >> $CHAIN_INFO_FILE
     # write bootnode info
-    echo "bootnode=$BOOTNODEINFO" >> $CHAIN_INFO_FILE
+    echo "BOOTNODEINFO=$BOOTNODEINFO" >> $CHAIN_INFO_FILE
     
     if [ "$CHAINTYPE" == "eth" ];then
-        echo "l1Url=$L1Url" >> $CHAIN_INFO_FILE
+        echo "L1Url=$L1Url" >> $CHAIN_INFO_FILE
     else
         echo "BTCHost=$BTCHost" >> $CHAIN_INFO_FILE
         echo "BTCUser=$BTCUser" >> $CHAIN_INFO_FILE
