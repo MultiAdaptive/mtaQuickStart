@@ -172,11 +172,11 @@ new_account() {
     read PASSWORD
     stty $SAVEDSTTY
 
-    $MULTIADAPTIVE_BIN/geth account new --datadir "$CHAIN_HOME_DIR/data"
+    $MULTIADAPTIVE_BIN/geth account new --datadir "$CHAIN_DATA_DIR/data"
    
-    touch $CHAIN_HOME_DIR/data/keystore/.password.txt
+    touch $CHAIN_DATA_DIR/data/keystore/.password.txt
 
-    echo "$PASSWORD" > $CHAIN_HOME_DIR/data/keystore/.password.txt
+    echo "$PASSWORD" > $CHAIN_DATA_DIR/data/keystore/.password.txt
 
     get_account_address
 }
@@ -184,7 +184,7 @@ new_account() {
 
 # get account address
 get_account_address() {
-    ADDRESS_LIST=`$MULTIADAPTIVE_BIN/geth  account list --datadir "$CHAIN_HOME_DIR/data"`
+    ADDRESS_LIST=`$MULTIADAPTIVE_BIN/geth  account list --datadir "$CHAIN_DATA_DIR/data"`
     if  [ ! -n "$ADDRESS_LIST" ];then
         new_account
     else
