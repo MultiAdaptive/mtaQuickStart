@@ -83,7 +83,7 @@ select_node_type() {
     
     else
         # starting a node
-        echo "do nothing"
+        echo "starting a node..."
     fi
 }
 
