@@ -137,8 +137,8 @@ install_gcc() {
     if [ $? -eq 0 ]; then
        echo "Update make success"
        
-       echo 'NOTE!!! You should do !!!:  1.Do source /home/ubuntu/.bashrc. When initenv.sh is finished.'
-       go env -w CGO_ENABLED=1
+       echo 'NOTE!!! You should do !!!:  1.Do source /home/ubuntu/.bashrc； 2. Input "go env -w CGO_ENABLED=1" When initenv.sh is finished.'
+       
     else
        echo "Update gcc failed"
     fi
