@@ -295,8 +295,6 @@ chose_chain_type() {
 
 }
 
-
-
 P2P_PORT=30303
 
 write_env_conf() {
