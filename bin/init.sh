@@ -202,11 +202,11 @@ get_account_address() {
 
     echo "address=0x$ADDRESS" >> $CHAIN_INFO_FILE
     echo "private=$PRIVATE" >> $CHAIN_INFO_FILE
-    
+
     echo "This message is very import,it will be used in regist node: address=0x$ADDRESS , private=$PRIVATE"
     echo "Please share no one and keep it safe."
     echo
-
+}
 
 config_url() {
     echo "Please conf the environment variable file...."
