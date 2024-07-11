@@ -49,6 +49,7 @@ ChainID=11155111
 
 
 ADDRESS_LIST=""
+PRIVATE=""
 
 # boot to p2p connect
 BOOTNODEINFO="enode://dbffc218798fd2febbb1106aa910d336b33bc1b01267a9181b7411af57b37751f9ebcf24e5264dd5fc7fb7572d799d5830882445de76e334590d4662c2a23034@13.212.115.195:30303"
@@ -191,15 +192,20 @@ new_account() {
 
 # get account address
 get_account_address() {
-    ADDRESS_LIST=`$MULTIADAPTIVE_BIN/geth account list --datadir "$CHAIN_DATA_DIR/data"`
+    ADDRESS_LIST=`$MULTIADAPTIVE_BIN/geth account private --datadir "$CHAIN_DATA_DIR/data" --password "$CHAIN_DATA_DIR/data/keystore/.password.txt"`
     if  [ ! -n "$ADDRESS_LIST" ];then
         new_account
     else
         ADDRESS=`echo $ADDRESS_LIST | cut -d '{' -f 2 | cut -d '}' -f 1`
+        PRIVATE=`echo $ADDRESS_LIST | cut -d '[' -f 2 | cut -d ']' -f 1`
     fi
 
     echo "address=0x$ADDRESS" >> $CHAIN_INFO_FILE
-}
+    echo "private=$PRIVATE" >> $CHAIN_INFO_FILE
+    
+    echo "This message is very import,it will be used in regist node: address=0x$ADDRESS , private=$PRIVATE"
+    echo "Please share no one and keep it safe."
+    echo
 
 
 config_url() {

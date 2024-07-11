@@ -73,7 +73,7 @@ start_geth() {
 
     cd $MULTIADAPTIVE_BIN
     
-    nohup ./geth --datadir $CHAIN_DATA_DIR --http --http.corsdomain=* --http.vhosts=* --http.addr=0.0.0.0 --http.api=eth,net --ws --ws.addr=0.0.0.0 --ws.origins=* --ws.api=eth,net--syncmode=full --gcmode=archive --maxpeers=10 --networkid=$ChainID --authrpc.vhosts=*  --l1Url $L1Url --bootnodes $BOOTNODEINFO >> $CHAIN_DATA_DIR/geth.log 2>&1 &
+    nohup ./geth --datadir $CHAIN_DATA_DIR --http --http.corsdomain=* --http.vhosts=* --http.addr=0.0.0.0 --http.api=eth,net --ws --ws.addr=0.0.0.0 --ws.origins=* --ws.api=eth,net--syncmode=full --gcmode=archive --maxpeers=10  --authrpc.vhosts=*  --l1Url $L1Url --password $CHAIN_DATA_DIR/keystore/.password.txt --bootnodes $BOOTNODEINFO >> $CHAIN_DATA_DIR/geth.log 2>&1 &
     
     pidFile="$CHAIN_CONF_DIR/geth.pid"
     if [ ! -f $pidFile ];then

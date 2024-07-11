@@ -15,7 +15,7 @@ After running the script, it will output two options in the terminal for the use
 After the user chooses to initialize the environment, the script will install the necessary environment as a regular node in the Domicon network. This includes the installation and configuration of Go, Git, GCC, Make, and NetTool. After the installation is complete, the user needs to manually enter the command source /home/ubuntu/.bashrc to make the configuration file effective.
 
 #### 2. Start Nodes
-- 2.1 After choosing to start nodes, the terminal will output 'Create a new account'. The terminal will then prompt the user to enter a password for creating a new account. After entering the password three times correctly, the new account will be successfully created. Once successful, the account information will be automatically recorded in conf/chain-info.properties.
+- 2.1 After choosing to start nodes, the terminal will output 'Create a new account'. The terminal will then prompt the user to enter a password for creating a new account. After entering the password three times correctly, the new account will be successfully created. Once successful, the account information will be automatically recorded in conf/chain-info.properties.And in the terminal we will display the address of the account created and the private key information, please keep it properly.
 
 - 2.2 After completing the above operation, the terminal will output 'Please choose the chain type supported by the program to run'. Currently, MultiAdaptive only supports Ethereum and Bitcoin types.
 
