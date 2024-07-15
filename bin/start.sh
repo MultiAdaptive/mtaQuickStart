@@ -31,6 +31,7 @@ TYPE=""
 P2P_PORT=
 
 BOOTNODEINFO=
+BTCBOOTNODEINFO=
 
 L1Url=
 
@@ -90,7 +91,7 @@ start_btc() {
 
     cd $MULTIADAPTIVE_BIN
     
-    nohup ./geth --datadir $CHAIN_DATA_DIR --http --http.corsdomain=* --http.vhosts=* --http.addr=0.0.0.0 --http.api=eth,net --ws --ws.addr=0.0.0.0 --ws.origins=* --ws.api=eth,net--syncmode=full --gcmode=archive --maxpeers=10 --l1Host $BTCHost --l1User $BTCUser --l1Password $BTCPWD --nodeType $NODETYPE --btcPrivate $BTCPriv --chainName bitcoin  --networkid=$ChainID --bootnodes $BOOTNODEINFO >> $CHAIN_DATA_DIR/geth.log 2>&1 &
+    nohup ./geth --datadir $CHAIN_DATA_DIR --http --http.corsdomain=* --http.vhosts=* --http.addr=0.0.0.0 --http.api=eth,net --ws --ws.addr=0.0.0.0 --ws.origins=* --ws.api=eth,net--syncmode=full --gcmode=archive --maxpeers=10 --l1Host $BTCHost --l1User $BTCUser --l1Password $BTCPWD --nodeType $NODETYPE --btcPrivate $BTCPriv --chainName bitcoin  --networkid=$ChainID --bootnodes $BTCBOOTNODEINFO >> $CHAIN_DATA_DIR/geth.log 2>&1 &
     
     pidFile="$CHAIN_CONF_DIR/geth.pid"
     if [ ! -f $pidFile ];then
@@ -100,7 +101,6 @@ start_btc() {
     echo $! > $pidFile
     echo "geth is started. pid is written into $pidFile."
     echo
-
 
 }
 
