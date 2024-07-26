@@ -182,9 +182,9 @@ new_account() {
     
     if [ $? -eq 0 ]; then
    
-        touch $CHAIN_DATA_DIR/data/keystore/.password.txt
+        touch $CHAIN_DATA_DIR/data/.password.txt
 
-        echo "$PASSWORD" >> $CHAIN_DATA_DIR/data/keystore/.password.txt
+        echo "$PASSWORD" >> $CHAIN_DATA_DIR/data/.password.txt
 
         get_account_address
     fi
@@ -194,7 +194,7 @@ new_account() {
 
 # get account address
 get_account_address() {
-    ADDRESS_LIST=`$MULTIADAPTIVE_BIN/geth account private --datadir "$CHAIN_DATA_DIR/data" --password "$CHAIN_DATA_DIR/data/keystore/.password.txt"`
+    ADDRESS_LIST=`$MULTIADAPTIVE_BIN/geth account private --datadir "$CHAIN_DATA_DIR/data" --password "$CHAIN_DATA_DIR/data/.password.txt"`
     if  [ ! -n "$ADDRESS_LIST" ];then
         new_account
     else
