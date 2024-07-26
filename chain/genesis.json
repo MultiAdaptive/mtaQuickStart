@@ -20,7 +20,7 @@
     "terminalTotalDifficulty": 0,
     "terminalTotalDifficultyPassed": true,
     "l1Conf": {
-      "genesisBlockNumber": 6242946,
+      "genesisBlockNumber": 6371633,
       "addressManager": "0x3CFAb5036e6Eefa7FE44D9f52f6AA36cC4C67983",
        "challengeContract": "0xBde58e53660eD722F2e0F13499ad8B784735559C",
        "challengeContractProxy": "0xDE079f7DB4610b213e6895a19F2D35002D2eFfAf",
